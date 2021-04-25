@@ -21,13 +21,13 @@ const useStyles = makeStyles({
 
 export default function CardComponent(props) {
   const classes = useStyles();
-// console.log('news props',props)
+// console.log('news props---',props)
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image={props.news.urlToImage}
+          image={props.news.url}
           title={props.news.author}
         />
         <CardContent>
@@ -41,7 +41,7 @@ export default function CardComponent(props) {
             {  props.news.author !== null ? 'AUTHOR:' + props.news.author : null }
           </Typography>
           <Typography gutterBottom variant="caption" component="p" style={{marginTop:'0.7em',color:'#e34234'}}>
-            {  props.news.source !== null ? 'SOURCE:' + props.news.source.name : null }
+            {  props.news.source !== null ? 'SOURCE:' + props.news.source : null }
           </Typography>
         </CardContent>
       </CardActionArea>
