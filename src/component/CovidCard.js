@@ -62,7 +62,7 @@ export default function CovidCard(props) {
           {`Total active cases : ${props.data.active}`}
         </Typography>
         <Typography className={classes.pos} color="textSecondary" style={{color:"white"}}>
-          {`Recoverd🎉${props.data.recovered}`}
+          {`Recovered🎉${props.data.recovered}`}
         </Typography>
         <Typography variant="body2" component="p" style={{color:"white"}}>
           {`Total cases:${props.data.cases}`}

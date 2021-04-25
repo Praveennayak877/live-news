@@ -31,7 +31,7 @@ useEffect(() => {
 const getNewsData=async()=>{
     setIsLoading(true)
     try {
-      await fetch("https://newsapi.org/v2/top-headlines?country=in&apiKey=de3fbf0d79914b02a10253d6c7f9e19c")
+      await fetch("https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=de3fbf0d79914b02a10253d6c7f9e19c")
        .then((res)=>res.json())
        .then((response)=>{
         // console.log('response',response)
@@ -124,7 +124,7 @@ const getCoivdIndia=async()=>{
         </Grid>
         </Box>
         <Button variant="contained" 
-        style={{color:"#fff",backgroundColor:"#e34234"}} 
+        style={{color:"#fff",backgroundColor:"#e34234",marginBottom:'1em'}} 
         onClick={()=>getMoreData()}
         >SHOW MORE</Button>
         </>
