@@ -64,12 +64,14 @@ const getMoreData=()=>{
                 <Box marginTop="3em">
                 <Grid container spacing={1} justify="space-between">
           { 
-          data.length > 0 ?
+            data !==null && 
+            data !== undefined &&
+            data.length > 0 ?
              data.slice(0,showData).map((item)=>{
                    return <CardComponent news={item} />
               })
               :
-            console.log('no data')
+            console.log('no data-----------')
           }
           </Grid>
           </Box>
