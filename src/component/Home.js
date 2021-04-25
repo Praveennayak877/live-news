@@ -6,6 +6,7 @@ import { Box,
 	Typography,Button } from "@material-ui/core";
 import React,{useState,useEffect} from "react";
 import CardComponent from "./Card";
+import CovidCard from "./CovidCard";
 import Footer from "./Footer";
 import Header from "./Header";
 import Loader from "./Loader"
@@ -13,6 +14,7 @@ import Loader from "./Loader"
 
 export default function Home() {
 const [data,setData] = useState([])
+const [covidData,setCovidData] = useState('')
 const [isLoading,setIsLoading] = useState(false)
 const [showData,setShowData] = useState(9)
 const [progress, setProgress] = useState(0);
@@ -20,6 +22,7 @@ const [buffer, setBuffer] = useState(10);
 
 useEffect(() => {
     getNewsData()
+    getCoivdIndia()
 }, [])
 
 const getNewsData=async()=>{
@@ -50,9 +53,33 @@ const getMoreData=()=>{
         showData + 3
         )
 }
+
+
+const getCoivdIndia=async()=>{
+  setIsLoading(true)
+  try {
+    await fetch("https://corona.lmao.ninja/v2/countries/india")
+    .then((res)=>res.json())
+    .then((response)=>{
+      setCovidData(response)
+      setIsLoading(false)
+    })
+    .catch((err)=>{
+      console.log('err in covid api',err)
+      setIsLoading(false)
+    })
+  } catch (error) {
+    console.log('error',error)
+    setIsLoading(false)
+  }
+}
+
+
+
   return (
     <div>
         <Header />
+        
         {
             isLoading === true ?
             <div style={{margin:'3em'}}>
@@ -60,7 +87,19 @@ const getMoreData=()=>{
                 <Loader />
                 </div>
             :
+              
             <Container style={{ color: "#fff" }}>
+              <Box marginTop='1em'>
+                <Grid container spacibg={1} justify="center">
+                  {
+                    covidData !==null && covidData !== undefined  ?
+                    <CovidCard data={covidData} />
+                    :
+                    console.log('no covid data')
+                  }
+                </Grid>
+              </Box>
+
                 <Box marginTop="3em">
                 <Grid container spacing={1} justify="space-between">
           { 
