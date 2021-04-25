@@ -31,12 +31,11 @@ useEffect(() => {
 const getNewsData=async()=>{
     setIsLoading(true)
     try {
-      // await fetch("https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=de3fbf0d79914b02a10253d6c7f9e19c")
-      await fetch("http://api.mediastack.com/v1/news?access_key=95c152facbb8619d7e33f2ade5c0cc57&countries=in")
+      await fetch("https://newsapi.org/v2/top-headlines?sources=google-news-in&apiKey=de3fbf0d79914b02a10253d6c7f9e19c")
        .then((res)=>res.json())
        .then((response)=>{
-        console.log('response',response)
-        setData(response.data)
+        console.log('response---',response)
+        setData(response.articles)
         setIsLoading(false)   
        })
        .catch((e)=>{
