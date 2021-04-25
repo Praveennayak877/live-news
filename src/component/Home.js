@@ -10,7 +10,8 @@ import CovidCard from "./CovidCard";
 import Footer from "./Footer";
 import Header from "./Header";
 import Loader from "./Loader"
-
+import CardActions from '@material-ui/core/CardActions';
+import StateDataTable from "./StateDataTable";
 
 export default function Home() {
 const [data,setData] = useState([])
@@ -19,6 +20,8 @@ const [isLoading,setIsLoading] = useState(false)
 const [showData,setShowData] = useState(9)
 const [progress, setProgress] = useState(0);
 const [buffer, setBuffer] = useState(10);
+const [show,setShow] = useState(false)
+
 
 useEffect(() => {
     getNewsData()
@@ -89,35 +92,45 @@ const getCoivdIndia=async()=>{
             :
               
             <Container style={{ color: "#fff" }}>
+              <CardActions>
+        <Button size="small" color="primary" variant="contained" onClick={()=>setShow(!show)}> {show === false ? 'States Covid cases' : 'India News'}</Button>
+      </CardActions>
+            {
+              show === false ?
+              <>
               <Box marginTop='1em'>
-                <Grid container spacibg={1} justify="center">
-                  {
-                    covidData !==null && covidData !== undefined  ?
-                    <CovidCard data={covidData} />
-                    :
-                    console.log('no covid data')
-                  }
-                </Grid>
-              </Box>
+              <Grid container spacibg={1} justify="center">
+                {
+                  covidData !==null && covidData !== undefined  ?
+                  <CovidCard data={covidData} />
+                  :
+                  console.log('no covid data')
+                }
+              </Grid>
+            </Box>
 
-                <Box marginTop="3em">
-                <Grid container spacing={1} justify="space-between">
-          { 
-            data !==null && 
-            data !== undefined &&
-            data.length > 0 ?
-             data.slice(0,showData).map((item)=>{
-                   return <CardComponent news={item} />
-              })
-              :
-            console.log('no data-----------')
-          }
-          </Grid>
-          </Box>
-          <Button variant="contained" 
-          style={{color:"#fff",backgroundColor:"#e34234"}} 
-          onClick={()=>getMoreData()}
-          >SHOW MORE</Button>
+              <Box marginTop="3em">
+              <Grid container spacing={1} justify="space-between">
+        { 
+          data !==null && 
+          data !== undefined &&
+          data.length > 0 ?
+           data.slice(0,showData).map((item)=>{
+                 return <CardComponent news={item} />
+            })
+            :
+          console.log('no data-----------')
+        }
+        </Grid>
+        </Box>
+        <Button variant="contained" 
+        style={{color:"#fff",backgroundColor:"#e34234"}} 
+        onClick={()=>getMoreData()}
+        >SHOW MORE</Button>
+        </>
+        :
+        <StateDataTable />
+            }
       </Container>
         }
       <Footer />

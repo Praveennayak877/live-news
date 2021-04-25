@@ -14,8 +14,8 @@ function App() {
   return (
     <Router>
     <div className="App">
-    <Switch>
         <Route exact path="/live-news" component={Home} />
+    <Switch>
       <Route exact path="/StateDataTable" component={StateDataTable} />
     </Switch>
     </div>

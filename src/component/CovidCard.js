@@ -73,9 +73,6 @@ export default function CovidCard(props) {
           {`Last Update:${date}`}
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small" color="primary" variant="contained" href="/StateDataTable" >States Covid cases</Button>
-      </CardActions>
     </Card>
   );
 }

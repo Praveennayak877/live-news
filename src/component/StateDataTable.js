@@ -104,7 +104,7 @@ const getAllData=async()=>{
 
   return (
       <div>
-          <Header />
+          {/* <Header /> */}
     <Paper className={classes.root}>
       <TableContainer className={classes.container}>
         <Table stickyHeader aria-label="sticky table">
@@ -149,7 +149,7 @@ const getAllData=async()=>{
         onChangeRowsPerPage={handleChangeRowsPerPage}
       />
     </Paper>
-    <Footer />
+    {/* <Footer /> */}
     </div>
   );
 }
