@@ -40,7 +40,7 @@ export default function CardComponent(props) {
           <Typography gutterBottom variant="h6" component="p" style={{marginTop:'1.4em'}}>
             {  props.news.author !== null ? 'AUTHOR:' + props.news.author : null }
           </Typography>
-          <Typography gutterBottom variant="h7" component="p" style={{marginTop:'0.7em',color:'#e34234'}}>
+          <Typography gutterBottom variant="caption" component="p" style={{marginTop:'0.7em',color:'#e34234'}}>
             {  props.news.source !== null ? 'SOURCE:' + props.news.source.name : null }
           </Typography>
         </CardContent>

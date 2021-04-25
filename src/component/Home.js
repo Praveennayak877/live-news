@@ -50,7 +50,6 @@ const getMoreData=()=>{
         showData + 3
         )
 }
-
   return (
     <div>
         <Header />
@@ -64,8 +63,8 @@ const getMoreData=()=>{
             <Container style={{ color: "#fff" }}>
                 <Box marginTop="3em">
                 <Grid container spacing={1} justify="space-between">
-          {
-          data.length ?
+          { 
+          data.length > 0 ?
              data.slice(0,showData).map((item)=>{
                    return <CardComponent news={item} />
               })

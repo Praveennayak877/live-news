@@ -81,7 +81,7 @@ export default function Header(props) {
         />
       </FormGroup>
       <ElevationScroll {...props}>
-      <AppBar position="static" color="#ffff" style={{color:"#e34234"}} >
+      <AppBar position="static" color="default" style={{color:"#e34234"}} >
         <Toolbar>
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
             <MenuIcon />
