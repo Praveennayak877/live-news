@@ -12,6 +12,8 @@ import Header from "./Header";
 import Loader from "./Loader"
 import CardActions from '@material-ui/core/CardActions';
 import StateDataTable from "./StateDataTable";
+import jsonData from './data.json'
+
 
 export default function Home() {
 const [data,setData] = useState([])
@@ -51,7 +53,7 @@ const getNewsData=async()=>{
 
 const getMoreData=()=>{
     setShowData( 
-        showData >= data.length ?
+        showData >= 6 ?
         alert('No latest News yet!')
         :
         showData + 3
@@ -112,7 +114,7 @@ const getCoivdIndia=async()=>{
 
               <Box marginTop="3em">
               <Grid container spacing={1} justify="space-between">
-        { 
+        {/* { 
           data !==null && 
           data !== undefined &&
           data.length > 0 ?
@@ -120,8 +122,41 @@ const getCoivdIndia=async()=>{
                  return <CardComponent news={item} />
             })
             :
-          console.log('no data-----------')
+            <CardComponent />
+          // console.log('no data-----------')
+        } */}
+
+        {
+          jsonData !==null && 
+          jsonData !== undefined &&
+          jsonData.length > 0 ?
+          jsonData.map((item)=>{
+            // console.log('items json',item)
+            return (
+              <>
+              <CardComponent news={item.articles[0]} />
+              <CardComponent news={item.articles[1]} />
+              <CardComponent news={item.articles[2]} />
+              <CardComponent news={item.articles[3]} />
+              <CardComponent news={item.articles[4]} />
+              <CardComponent news={item.articles[5]} />
+              <CardComponent news={item.articles[6]} />
+              <CardComponent news={item.articles[7]} />
+              <CardComponent news={item.articles[8]} />
+              <CardComponent news={item.articles[9]} />
+              <CardComponent news={item.articles[10]} />
+              <CardComponent news={item.articles[11]} />
+              <CardComponent news={item.articles[12]} />
+              <CardComponent news={item.articles[13]} />
+              <CardComponent news={item.articles[14]} />
+              </>
+            )
+          })
+          :
+          console.log('no data')
         }
+
+        <CardComponent />
         </Grid>
         </Box>
         <Button variant="contained" 
